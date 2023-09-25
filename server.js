@@ -8,6 +8,7 @@ const port = process.env.PORT || 2000
 const download = require("./routes/download")
 createConnection();
 app.use(express.json());
+app.use(express.static("public"));
 app.use("/Contact", user);
 app.use("/", download);
 app.use(cors())
