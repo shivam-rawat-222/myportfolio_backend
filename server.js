@@ -11,11 +11,20 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use("/Contact", user);
 app.use("/", download);
-app.use(cors({
-    origin: 'http://localhost:3000', // Allow requests from this origin
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Include cookies, if your app uses them
-}));
+const allowedOrigins = ['https://shivamrawat.vercel.app', "http://localhost:3000/"];
+
+app.use(
+    cors({
+        origin: function (origin, callback) {
+
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
+    })
+);
 
 app.get("/", (req, res) => {
     res.send("rawat ki api h")
