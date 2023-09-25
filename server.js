@@ -13,16 +13,10 @@ app.use("/Contact", user);
 app.use("/", download);
 const allowedOrigins = ['https://shivamrawat.vercel.app', "http://localhost:3000/"];
 
-app.use(cors({
-    origin: function (origin, callback) {
-
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            console.log("not allowed")
-        }
-    },
-})
+app.use(
+    cors({
+        origin: 'https://shivamrawat.vercel.app',
+    })
 );
 
 app.get("/", (req, res) => {
