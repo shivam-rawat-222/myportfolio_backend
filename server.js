@@ -19,7 +19,7 @@ app.use("/",login)
 
 
 app.get("/", (req, res) => {
-    res.send("rawat ki api h")
+    res.send("rawat ki updated api h")
 })
 app.get("/hello", (req, res) => {
 
