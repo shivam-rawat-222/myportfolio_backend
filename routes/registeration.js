@@ -22,16 +22,20 @@ router.route("/new").post(async(req,res)=>{
     const {username , gmail , password } = req.body;
     if(!username || !password || !gmail)
     {
-        res.status(400);
-        throw new Error("data not found ")
+        console.log(username)
+        res.status(400).send("plz enter the complete data ")
+        
+        
     }
     else
     {
         const check = await register.findOne({gmail : gmail})
         if(check)
         {
+            console.log(check)
             res.status(401);
-            throw new Error("user already there")
+            res.json({"message " : "user already exist" })
+            
         }
         else{
         const hashedpass = await bcrypt.hash(password,10);

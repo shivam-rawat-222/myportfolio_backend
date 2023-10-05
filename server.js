@@ -10,6 +10,11 @@ const download = require("./routes/download")
 const login = require("./routes/login")
 createConnection();
 app.use(cors())
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+   
+//     next();
+//   });
 app.use(express.json());
 app.use(express.static("public"));
 app.use("/Contact", user);
@@ -19,7 +24,7 @@ app.use("/",login)
 
 
 app.get("/", (req, res) => {
-    res.send("rawat ki updated api h")
+    res.send("rawat ki updated2  api h")
 })
 app.get("/hello", (req, res) => {
 
