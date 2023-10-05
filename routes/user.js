@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const asynchandler = require("express-async-handler")
 const users = require("../Schemas/userSchema")
+
+
 router.route("/all").get(asynchandler(async (req, res) => {
     const data = await users.find()
     res.status(200).json({ message: data })
