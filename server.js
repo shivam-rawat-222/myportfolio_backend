@@ -8,6 +8,7 @@ const port = process.env.PORT || 2000
 const registeration = require("./routes/registeration")
 const download = require("./routes/download")
 const login = require("./routes/login")
+const bodyParser = require('body-parser');
 createConnection();
 app.use(cors())
 // app.use((req, res, next) => {
@@ -15,6 +16,7 @@ app.use(cors())
    
 //     next();
 //   });
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static("public"));
 app.use("/Contact", user);
